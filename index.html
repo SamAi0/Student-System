@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Student Registration and Result Management</h1></header>
+
+  <!-- Use the side menu to choose a page. -->
+  <div class="app-layout">
+    <aside class="side-menu">
+      <h2>Menu</h2>
+      <button class="menu-button active" data-page="studentPage">Student Details</button>
+      <button class="menu-button" data-page="recordsPage">Student Records</button>
+      <button class="menu-button" data-page="resultPage">Result Management</button>
+    </aside>
+
+    <main class="content">
+      <section id="studentPage" class="content-page card">
+        <h2>Enter Student Details</h2>
+        <form id="studentForm" class="form-grid">
+          <label>Student ID<input id="studentId" type="text" required></label>
+          <label>Full Name<input id="studentName" type="text" required></label>
+          <label>Email Address<input id="studentEmail" type="email" required></label>
+          <label>Phone Number<input id="studentPhone" type="tel" required></label>
+          <label>Course Name<input id="studentCourse" type="text" required></label>
+          <button class="main-button" type="submit">Save Student</button>
+        </form>
+        <p id="studentMessage" class="message"></p>
+      </section>
+
+      <section id="recordsPage" class="content-page card hide">
+        <h2>Student Records</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Student ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Course</th><th>Action</th></tr></thead>
+            <tbody id="recordsTable"></tbody>
+          </table>
+        </div>
+        <p id="emptyMessage" class="message">No student records yet.</p>
+      </section>
+
+      <!-- Result entry and result search are together on this page. -->
+      <section id="resultPage" class="content-page card hide">
+        <h2>Result Management</h2>
+        <h3>Enter Student Marks</h3>
+        <form id="resultForm" class="form-grid">
+          <label>Choose Student<input id="resultStudent" list="studentOptions" placeholder="Type Student ID" required></label>
+          <datalist id="studentOptions"></datalist>
+          <label>HTML Marks<input class="mark" id="htmlMarks" type="number" min="0" max="100" required></label>
+          <label>CSS Marks<input class="mark" id="cssMarks" type="number" min="0" max="100" required></label>
+          <label>JavaScript Marks<input class="mark" id="jsMarks" type="number" min="0" max="100" required></label>
+          <label>Database Marks<input class="mark" id="databaseMarks" type="number" min="0" max="100" required></label>
+          <label>Computer Fundamentals Marks<input class="mark" id="computerMarks" type="number" min="0" max="100" required></label>
+          <button class="main-button" type="submit">Save Result</button>
+        </form>
+        <p class="message">Each subject is out of 100. At least 35 marks in every subject are needed to pass.</p>
+        <p id="resultMessage" class="message"></p>
+
+        <hr>
+        <h3>Search Student Result</h3>
+        <form id="searchForm" class="search-form">
+          <label>Enter Student ID<input id="searchId" type="text" required></label>
+          <button class="main-button" type="submit">Search</button>
+        </form>
+        <div id="searchMessage" class="message">Enter a Student ID to find a result.</div>
+        <div id="searchResult" class="search-result hide"></div>
+
+        <hr>
+        <h3>Saved Results</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Student ID</th><th>Name</th><th>Total</th><th>Percentage</th><th>Grade</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="resultTable"></tbody>
+          </table>
+        </div>
+        <p id="noResults" class="message">No results saved yet.</p>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
